@@ -1,0 +1,51 @@
+@{
+    // Use the base layout
+    Layout = "_Layout";
+
+    // Get routing values
+    var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var actionName = ViewContext.RouteData.Values["Action"]?.ToString();
+}
+
+<nav class="nav-bar">
+    <ul class="left-nav">
+
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Index"
+               class="@(controllerName == "Home" && actionName == "Index" ? "active-link" : "")">
+               Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a asp-area="" asp-controller="Search" asp-action="Index"
+               class="@(controllerName == "Search" && actionName == "Index" ? "active-link" : "")">
+               Search
+            </a>
+        </li>
+
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy"
+               class="@(controllerName == "Home" && actionName == "Privacy" ? "active-link" : "")">
+               Privacy
+            </a>
+        </li>
+
+    </ul>
+
+    <ul class="right-nav">
+
+        <li>
+            <a asp-area="Admin" asp-controller="Users" asp-action="Index">Admin</a>
+        </li>
+
+        <li>
+            <a asp-area="Airlines" asp-controller="Flights" asp-action="Index">Airline</a>
+        </li>
+
+    </ul>
+</nav>
+
+<div class="main-content">
+    @RenderBody()
+</div>
